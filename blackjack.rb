@@ -5,20 +5,44 @@ class Game
                           2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11,
                           2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11,
                           2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11]
-        @player_cards = player_initial_cards
-        @dealer_cards = dealer_initial_card
+        @player_cards = player_cards
+        @dealer_cards = dealer_cards
+        greet_player
         game_layout
+        check_for_blackjack
         ask_player
         gameplay
     end
 
+    def greet_player
+        puts '
+                                                                             ######                                                          
+        #  #  # ###### #       ####   ####  #    # ######    #####  ####     #     # #        ##    ####  #    #      #   ##    ####  #    # 
+        #  #  # #      #      #    # #    # ##  ## #           #   #    #    #     # #       #  #  #    # #   #       #  #  #  #    # #   #  
+        #  #  # #####  #      #      #    # # ## # #####       #   #    #    ######  #      #    # #      ####        # #    # #      ####   
+        #  #  # #      #      #      #    # #    # #           #   #    #    #     # #      ###### #      #  #        # ###### #      #  #   
+        #  #  # #      #      #    # #    # #    # #           #   #    #    #     # #      #    # #    # #   #  #    # #    # #    # #   #  
+         ## ##  ###### ######  ####   ####  #    # ######      #    ####     ######  ###### #    #  ####  #    #  ####  #    #  ####  #    #'
+        puts '
+        #####                           #                            
+        #     #  ####   ####  #####     #       #    #  ####  #    # 
+        #       #    # #    # #    #    #       #    # #    # #   #  
+        #  #### #    # #    # #    #    #       #    # #      ####   
+        #     # #    # #    # #    #    #       #    # #      #  #   
+        #     # #    # #    # #    #    #       #    # #    # #   #  
+         #####   ####   ####  #####     #######  ####   ####  #    #'
+    end
+
     def game_layout
-        @player_cards_sum = player_cards_sum(@player_cards)
-        @dealer_cards_sum = dealer_cards_sum(@dealer_cards)
-        puts "Player's cards: #{@player_cards}, player's total: #{@player_cards_sum}."
+        @player_cards_sum = cards_total_value(@player_cards)
+        @dealer_cards_sum = cards_total_value(@dealer_cards)
         puts "Dealer's cards: #{@dealer_cards}, dealer's total: #{@dealer_cards_sum}."
+        puts "Player's cards: #{@player_cards}, player's total: #{@player_cards_sum}."     
+    end
+
+    def check_for_blackjack
         if @player_cards_sum == 21
-            puts 'BOOM! BLACKJACK! YOU WIN!'
+            puts 'BOOM! BLACKJACK! YOU WIN!' 
             game_over
         end
     end
@@ -78,7 +102,7 @@ class Game
                 puts "Dealer busts! You WIN. Winner winner chicken dinner!"
                 game_over
                 break
-            elsif @dealer_cards_sum >= 17
+            elsif @dealer_cards_sum > 16
                 compare_score
                 break
             end
@@ -96,6 +120,14 @@ class Game
     def dealer_cards_sum(array)
         sum = 0
         array.each do |card|
+        sum += card
+        end
+        sum
+    end
+
+    def cards_total_value(cards)
+        sum = 0
+        cards.each do |card|
         sum += card
         end
         sum
@@ -126,11 +158,11 @@ class Game
         @deck_of_cards.sample
     end
 
-    def player_initial_cards
+    def player_cards
         [one_random_card, one_random_card]
     end
 
-    def dealer_initial_card
+    def dealer_cards
         [one_random_card]
     end
 end
