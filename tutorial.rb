@@ -21,3 +21,31 @@ puts "7. If the dealer goes over 21, player wins.".colorize(:light_blue)
 puts ''
 puts "8. If the dealer does not bust, then the higher point total between the player and the dealer will win.".colorize(:light_blue)
 puts ''
+puts 'Enter 1 to play, 3 to quit or 2 to go to the menu.'.colorize(:green)
+puts ''
+
+loop do
+    case gets.chomp.to_i
+    when 1
+        # Run blackjack file.
+        require_relative 'run_game'
+    when 2
+        require_relative 'menu'
+    when 3
+        # Quit app
+        puts '
+        _______  __   __  _______  __  
+        |  _    ||  | |  ||       ||  | 
+        | |_|   ||  |_|  ||    ___||  | 
+        |       ||       ||   |___ |  | 
+        |  _   | |_     _||    ___||__| 
+        | |_|   |  |   |  |   |___  __  
+        |_______|  |___|  |_______||__| '.colorize(:color => :light_red)
+        sleep(2)
+        system 'cls'
+        exit
+    else
+        # Unexpected input.
+        puts 'Invalid input! Please enter 1, 2 or 3.'
+    end
+end
