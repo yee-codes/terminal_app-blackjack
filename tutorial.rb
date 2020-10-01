@@ -1,6 +1,8 @@
 require 'colorize'
 require 'artii'
+require 'tty-prompt'
 
+# Explain what blackjack is and game rules.
 puts 'How to Play'.colorize(:green)
 puts "The object of the game of Blackjack is simply to get more points than the dealer without going over 21.\n".colorize(:light_blue)
 puts 'Game Rules'.colorize(:green)
@@ -12,26 +14,46 @@ puts "5. Otherwise, the player can choose one of two options to proceed: hit or 
 puts "6. After the player has had his/her turn, the dealer will draw another card. The dealer will continue to draw until the dealer has a total of 17 or more.\n".colorize(:light_blue)
 puts "7. If the dealer goes over 21, player wins.\n".colorize(:light_blue)
 puts "8. If the dealer does not bust, then the higher point total between the player and the dealer will win.\n".colorize(:light_blue)
-puts "Enter 1 to play, 3 to quit or 2 to go to the menu.\n".colorize(:green)
+# puts "Enter 1 to play, 3 to quit or 2 to go to the menu.\n".colorize(:green)
 
-# ASCII Art
-bye = Artii::Base.new :font => 'starwars'
+# # ASCII Art
+# bye = Artii::Base.new :font => 'starwars'
 
-loop do
-    case gets.chomp.to_i
-    when 1
-        # Run blackjack file.
-        require_relative 'run_game'
-    when 2
-        require_relative 'menu'
-    when 3
-        # Quit app
-        puts bye.asciify("Bye!").colorize(:color => :light_cyan)
-        sleep(2)
-        system 'cls'
-        exit
-    else
-        # Unexpected input.
-        puts 'Invalid input! Please enter 1, 2 or 3.'
-    end
+# loop do
+#     case gets.chomp.to_i
+#     when 1
+#         # Run blackjack file.
+#         require_relative 'run_game'
+#     when 2
+#         require_relative 'menu'
+#     when 3
+#         # Quit app
+#         puts bye.asciify("Bye!").colorize(:color => :light_cyan)
+#         sleep(2)
+#         system 'cls'
+#         exit
+#     else
+#         # Unexpected input.
+#         puts 'Invalid input! Please enter 1, 2 or 3.'
+#     end
+# end
+
+prompt = TTY::Prompt.new
+replay = 'Wanna play again?'
+choices = %w(Play Home Quit)
+answer = prompt.select(replay, choices)
+
+if answer == choices[0]
+    require_relative 'run_game'
+elsif answer == choices[1]
+    require_relative 'menu'
+elsif answer == choices[2]
+    quit
+end
+
+def quit
+    puts @bye.asciify("Bye!").colorize(:color => :light_cyan)
+    sleep(2)
+    system 'cls'
+    exit
 end
