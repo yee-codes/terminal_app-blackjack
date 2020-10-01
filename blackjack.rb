@@ -1,11 +1,14 @@
 # Link Ruby Gems.
 require 'colorize'
+require 'artii'
 
 # Class for the entire Blackjack game.
 class Game
     # Run game.
     def initialize
         @in_game = true
+        @play_msg = Artii::Base.new :font => 'standard'
+        @bye = Artii::Base.new :font => 'starwars'
         # One deck of cards used for the app, Aces are counted as 11 points.
         @deck_of_cards = [2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11,
                           2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11,
@@ -16,6 +19,7 @@ class Game
         @dealer_cards = dealer_cards
         # Greet player.
         greet_player
+        sleep(1)
         # Display current game status: player and dealer cards and total points.
         game_layout
         # Check player's hand for blackjack/21.
@@ -26,14 +30,7 @@ class Game
 
     # Greet player.
     def greet_player
-        puts '
-        ######                                                          
-        #     # #        ##    ####  #    #      #   ##    ####  #    # 
-        #     # #       #  #  #    # #   #       #  #  #  #    # #   #  
-        ######  #      #    # #      ####        # #    # #      ####   
-        #     # #      ###### #      #  #        # ###### #      #  #   
-        #     # #      #    # #    # #   #  #    # #    # #    # #   #  
-        ######  ###### #    #  ####  #    #  ####  #    #  ####  #    # '.colorize(:color => :light_yellow)
+        puts @play_msg.asciify("Let's play!").colorize(:color => :light_yellow)
     end
 
     # Display current game status: player and dealer cards and total points.
@@ -221,14 +218,7 @@ class Game
                 require_relative 'tutorial'
             when 3
                 # Quit app
-                puts '
-                _______  __   __  _______  __  
-                |  _    ||  | |  ||       ||  | 
-                | |_|   ||  |_|  ||    ___||  | 
-                |       ||       ||   |___ |  | 
-                |  _   | |_     _||    ___||__| 
-                | |_|   |  |   |  |   |___  __  
-                |_______|  |___|  |_______||__| '.colorize(:color => :light_red)
+                puts @bye.asciify("Bye!").colorize(:color => :light_cyan)
                 sleep(2)
                 system 'cls'
                 exit
