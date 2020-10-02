@@ -48,6 +48,10 @@ At each step, a message will be displayed in the application to guide the user a
 
 If the user makes an invalid input at each option available to the user, an error message in the application will automatically pop up so that the user is aware of the valid inputs to enter. The purpose of this error message is designed to be least disruptive to the game as possible and the cards that have already been dealt will remain as is until the user makes a valid input.
 
+## R8 - Flowchart
+
+![Diagram](docs/flowchart.png)
+
 ## R9 - Trello Board Link
 
 [Trello](https://trello.com/b/5C7DvVxt/terminal-app-yee)
