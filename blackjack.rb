@@ -1,6 +1,7 @@
 # Link Ruby Gems.
 require 'colorize'
 require 'artii'
+require 'tty-prompt'
 
 # Class for the entire Blackjack game.
 class Game
@@ -58,11 +59,12 @@ class Game
     def check_for_blackjack
         if @player_cards_sum == 21
             puts "BOOM! BLACKJACK! YOU WIN! [̲̅$̲̅(̲̅ ͡° ͜ʖ ͡°̲̅)̲̅$̲̅]\n"
-            puts 'Enter 1 to play again, 2 for tutorial or 3 to quit game.'.colorize(:green)
-            game_loop
-            # game_over
+            puts 'Thanks for playing!'.colorize(:light_green ).colorize( :background => :light_blue)
+            exit
         elsif @player_cards_sum > 21
             puts "UNLUCKY! This is a rare occurence. You lose! ¯\_(ツ)_/¯"
+            puts 'Thanks for playing!'.colorize(:light_green ).colorize( :background => :light_blue)
+            exit
         else ask_player
         end
     end
@@ -106,9 +108,8 @@ class Game
         case @player_cards_sum
         when 22..31
             puts "You bust! Bye bye money. Play again. (⊙_☉)\n"
-            puts 'Enter 1 to play again, 2 for tutorial and 3 to quit game.'.colorize(:green)
-            game_loop
-            # game_over
+            puts 'Thanks for playing!'.colorize(:light_green ).colorize( :background => :light_blue)
+            exit
         when 21
             puts 'Well done!'
             dealer_draws
@@ -128,9 +129,8 @@ class Game
             dealer_draws
         elsif @dealer_sum > 21
             puts "Dealer busts! You WIN. Winner winner chicken dinner! ლ( ̅°̅ ੪ ̅°̅ )ლ\n"
-            puts 'Enter 1 to play again, 2 for tutorial and 3 to quit game.'.colorize(:green)
-            game_loop
-            # game_over
+            puts 'Thanks for playing!'.colorize(:light_green ).colorize( :background => :light_blue)
+            exit
         elsif @dealer_sum > 16 && @dealer_sum <= 21
             compare_score
         end
@@ -163,28 +163,20 @@ class Game
         sum
     end
 
-    # Change state of game from true to false: end of a game.
-    def game_over
-        @in_game = false
-    end
-
     # Determine game outcome: player wins, dealer wins or push/tie.
     def compare_score
         if @dealer_cards_sum > @player_cards_sum
             puts "You lose! ¯\_(ツ)_/¯\n"
-            puts 'Enter 1 to play again, 2 for tutorial and 3 to quit game.'.colorize(:green)
-            game_loop
-            # game_over
+            puts 'Thanks for playing!'.colorize(:light_green ).colorize( :background => :light_blue)
+            exit
         elsif @dealer_cards_sum == @player_cards_sum
             puts "It's a push. ᕙ(⇀‸↼‶)ᕗ\n"
-            puts 'Enter 1 to play again, 2 for tutorial and 3 to quit game.'.colorize(:green)
-            game_loop
-            # game_over
+            puts 'Thanks for playing!'.colorize(:light_green ).colorize( :background => :light_blue)
+            exit
         else
             puts "You win! (>‿◠)\n"
-            puts 'Enter 1 to play again, 2 for tutorial and 3 to quit game.'.colorize(:green)
-            game_loop
-            # game_over
+            puts 'Thanks for playing!'.colorize(:light_green ).colorize( :background => :light_blue)
+            exit
         end
     end
 
@@ -206,27 +198,6 @@ class Game
     # Draw dealer initial one card.
     def dealer_cards
         [one_random_card]
-    end
-
-    def game_loop
-        loop do
-            case gets.chomp.to_i
-            when 1
-                # Run blackjack file.
-                require_relative 'run_game'
-            when 2
-                require_relative 'tutorial'
-            when 3
-                # Quit app
-                puts @bye.asciify("Bye!").colorize(:color => :light_cyan)
-                sleep(2)
-                system 'cls'
-                exit
-            else
-                # Unexpected input.
-                puts 'Invalid input! Please enter 1, 2 or 3.'
-            end
-        end
     end
 end
 # Game.new

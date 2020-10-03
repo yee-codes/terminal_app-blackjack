@@ -3,6 +3,8 @@ require "colorize"
 require "artii"
 require "terminal-table"
 
+system 'cls'
+
 # Group menu items in a table using terminal-table.
 menu = []
 menu << ["1) Play"]
