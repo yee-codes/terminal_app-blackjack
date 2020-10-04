@@ -1,4 +1,4 @@
-require_relative '../blackjack'
+require_relative '../src/blackjack.rb'
 
 RSpec.describe Game do
     # Feature being tested: ensuring the method (cards_total_value(cards) in blackjack.rb) that calculates cards 

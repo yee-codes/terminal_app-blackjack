@@ -27,7 +27,8 @@ At the end of each game, there will be a message indicating whether the player w
 The application has a navigation menu which allows users to either: 
 (1) proceed to start playing the game; 
 (2) read “how to play” instructions which explains the object, rules and operation of the game; or
-(3) exit the application. 
+(3) exit the application.
+
 The navigation menu requires input from the user to proceed to the relevant page or function.
 
 ### Feature 2: In-game Actions
@@ -64,7 +65,7 @@ If the user makes an invalid input at each option available to the user, an erro
 
 2. Once you have a copy of the repository on your computer, navigate to `terminal_app-blackjack`.
 
-3. Open the terminal and enter `ruby menu.rb` to run the app. I hope you like the game.
+3. Open the terminal and enter `ruby menu.rb` to run the app. I hope you enjoy the game.
 
 ### System/Hardware Requirements
 
@@ -72,14 +73,16 @@ This game can be executed on all operating systems, However, please ensure Ruby 
 
 ### Dependencies
 
-The following Ruby Gems have been used to develop the app:
+The following Ruby gems have been used to develop the app:
 
 * gem "colorize", "~> 0.8.1"
 * gem "terminal-table", "~> 1.8"
 * gem "artii", "~> 2.1"
 * gem "tty-prompt", "~> 0.22.0"
 
-Please ensure all the Ruby Gems are installed to enable all the features of the app. The easiest way to ensure this is use the `bundle install` command in the command line.
+Please ensure all the Ruby gems are installed to enable all the features of the app. The easiest way to ensure this is use bundler. Firstly, `gem install bundler` to install bundler. Then, `bundle install` to install all the dependencies in the gem file.
+
+Alternatively, you could install the gem using `gem install RubyGem`.
 
 ### Gameplay
 
@@ -89,15 +92,8 @@ Please ensure all the Ruby Gems are installed to enable all the features of the 
 
 3. When you have a basic understanding of the rules, please feel free to select 'Play' to start a game of Blackjack.
 
-4. During gameplay, you'll be asked to make a decision on how you want to proceed in the game. The two options are: 'Hit' and 'Stand'.
+4. During gameplay, you'll be asked to make one or more decisions on how you want to proceed in the game. The two options are: 'Hit' and 'Stand'.
 
-5. Once you're happy with the total points of your hand, the dealer will draw one or more cards according to the pre-set rules. If you go over 21 before the dealer's turn, you lose the game immediately. CHOOSE YOUR ACTION CAREFULLY!
+5. Once you're happy with the total points of your hand, the dealer will draw one or more cards according to the pre-set rules. If you go over 21 before the dealer's turn, you lose the game immediately. So, CHOOSE YOUR ACTION CAREFULLY!
 
 6. At the end of a game, both your score and the dealer's score are compared to determine the winner. Good luck!
-
-
-
-
-
-
-
