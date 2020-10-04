@@ -63,7 +63,7 @@ If the user makes an invalid input at each option available to the user, an erro
 
 1. Clone this repository to your computer. For more information on how to clone a remote repository: visit [GitHub](https://docs.github.com/en/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/cloning-a-repository).
 
-2. Once you have a copy of the repository on your computer, navigate to `terminal_app-blackjack`.
+2. Once you have a copy of the repository on your computer, navigate to `terminal_app-blackjack` and go to the `src` folder.
 
 3. Open the terminal and enter `ruby menu.rb` to run the app. I hope you enjoy the game.
 
