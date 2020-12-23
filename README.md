@@ -1,4 +1,4 @@
-# T1A3 - Terminal Application - Shao Yee Ng
+# T1A3 - Terminal Application - Shao Yee Ng ✅
 
 ## R4 - Source Control Repository Link - GitHub
 
